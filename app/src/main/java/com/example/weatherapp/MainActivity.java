@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                     Coords coords = null;
                     try {
                         coords = future.get(10, TimeUnit.SECONDS);
+                        if (coords.getQc_geo() == 5) {
+                            Toast.makeText(MainActivity.this, R.string.badInput, Toast.LENGTH_LONG).show();
+                            return;
+                        }
                     } catch (ExecutionException | InterruptedException | TimeoutException e) {
                         throw new RuntimeException(e);
                     }
@@ -204,13 +208,44 @@ public class MainActivity extends AppCompatActivity {
                         "Температура: " + jsonObject.getJSONObject("main").getDouble("temp") + "℃\n" +
                         "Влажность: " + jsonObject.getJSONObject("main").getDouble("humidity") + "%\n" +
                         "Давление: " + jsonObject.getJSONObject("main").getDouble("pressure") + " мм.рт.ст.\n" +
-                        "Скорость ветра: " +  + jsonObject.getJSONObject("wind").getDouble("speed") + "м/с" + "\n"
+                        "Скорость ветра: " +  + jsonObject.getJSONObject("wind").getDouble("speed") + "м/с" + "\n" +
+                                "Направление ветра: " + deg(jsonObject.getJSONObject("wind").getDouble("deg")) + "\n"
                         );
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
 
+        }
+    }
+
+    private String deg(int deg) {
+        if (deg >= 332.5 || deg < 27.5) {
+            return "С";
+        }
+        if (deg >= 27.5 && deg < 72.5) {
+            return "СВ";
+        }
+        if (deg >= 72.5 && deg < 117.5) {
+            return "В";
+        }
+        if (deg >= 117.5 && deg < 162.5) {
+            return "ЮВ";
+        }
+        if (deg >= 162.5 && deg < 207.5) {
+            return "Ю";
+        }
+        if (deg >= 207.5 && deg < 252.5) {
+            return "ЮЗ";
+        }
+        if (deg >= 252.5 && deg < 297.5) {
+            return "З";
+        }
+        if (deg >= 297.5 && deg < 332.5) {
+            return "СЗ";
+        }
+        else {
+            throw new RuntimeException();
         }
     }
 }
