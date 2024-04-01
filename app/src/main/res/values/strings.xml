@@ -4,5 +4,5 @@
     <string name="hint">Введите свой город</string>
     <string name="mainButton">Узнать погоду</string>
     <string name="noUserInput">Название города не введено</string>
-    <string name="badInput">Город, село, город сельского типа, село городского типа, деревня, станица не найдены</string>
+    <string name="badInput">Населенный пункт не найден</string>
 </resources>
