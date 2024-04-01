@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                         "Влажность: " + jsonObject.getJSONObject("main").getDouble("humidity") + "%\n" +
                         "Давление: " + jsonObject.getJSONObject("main").getDouble("pressure") + " мм.рт.ст.\n" +
                         "Скорость ветра: " +  + jsonObject.getJSONObject("wind").getDouble("speed") + "м/с" + "\n" +
-                                "Направление ветра: " + deg(jsonObject.getJSONObject("wind").getDouble("deg")) + "\n"
+                        "Направление ветра: " + deg(jsonObject.getJSONObject("wind").getDouble("deg")) + "\n"
                         );
 
             } catch (JSONException e) {
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String deg(int deg) {
+    private String deg(double deg) {
         if (deg >= 332.5 || deg < 27.5) {
             return "С";
         }
