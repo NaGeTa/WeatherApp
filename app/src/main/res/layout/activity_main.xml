@@ -46,6 +46,15 @@
         android:text="@string/mainButton"
         android:textColor="@color/black" />
 
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:background="@color/hint"
+        android:layout_height="2sp"
+        android:layout_below="@id/main_btn"
+        android:layout_marginTop="20sp"
+        tools:ignore="SmallSp" />
+
     <TextView
         android:id="@+id/result_info"
         android:layout_width="match_parent"
@@ -53,8 +62,8 @@
         android:fontFamily="@font/montserrat_bold"
         android:layout_marginTop="60sp"
         android:textAlignment="center"
-        android:textColor="@color/hint"
+        android:textColor="@color/white"
         android:textSize="25sp"
-        android:layout_below="@id/main_btn"/>
+        android:layout_below="@id/line"/>
 
 </RelativeLayout>

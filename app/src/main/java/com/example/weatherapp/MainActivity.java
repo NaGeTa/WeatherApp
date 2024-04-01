@@ -200,11 +200,12 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(result);
 
-                resultInfo.setText("Температура: " + jsonObject.getJSONObject("main").getDouble("temp") + "\n" +
-                        "Влажность: " + jsonObject.getJSONObject("main").getDouble("humidity") + "\n" +
-                        "Давление: " + jsonObject.getJSONObject("main").getDouble("pressure") + "\n" +
-                        "Скорость ветра: " +  + jsonObject.getJSONObject("wind").getDouble("speed") + "м/с" + "\n" +
-                        "Подробности: " + jsonObject.getJSONArray("weather").getJSONObject(0).getString("description") + "\n");
+                resultInfo.setText("Погода: " + jsonObject.getJSONArray("weather").getJSONObject(0).getString("description") + "\n\n" +
+                        "Температура: " + jsonObject.getJSONObject("main").getDouble("temp") + "℃\n" +
+                        "Влажность: " + jsonObject.getJSONObject("main").getDouble("humidity") + "%\n" +
+                        "Давление: " + jsonObject.getJSONObject("main").getDouble("pressure") + " мм.рт.ст.\n" +
+                        "Скорость ветра: " +  + jsonObject.getJSONObject("wind").getDouble("speed") + "м/с" + "\n"
+                        );
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);
