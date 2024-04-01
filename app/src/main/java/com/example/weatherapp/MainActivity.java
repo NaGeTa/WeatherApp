@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                     Coords coords = null;
                     try {
                         coords = future.get(10, TimeUnit.SECONDS);
+                        if (coords.getQc_geo() == 5) {
+                            Toast.makeText(MainActivity.this, R.string.badInput, Toast.LENGTH_LONG).show();
+                            return;
+                        }
                     } catch (ExecutionException | InterruptedException | TimeoutException e) {
                         throw new RuntimeException(e);
                     }
